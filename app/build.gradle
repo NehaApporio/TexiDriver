@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        manifestPlaceholders = [
+                onesignal_app_id: 'e65c1f21-312b-40b4-a5db-3f9a6e608a79',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
+        applicationId "com.example.mmcomp.texidriver"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0-alpha1'
+    //noinspection GradleCompatible
+    implementation 'com.google.android.gms:play-services:11.8.0'
+    implementation  'com.onesignal:OneSignal:3.10.0'
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    implementation 'com.google.maps.android:android-maps-utils:0.5+'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+}
